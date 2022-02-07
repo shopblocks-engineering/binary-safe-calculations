@@ -55,6 +55,8 @@ class NumberTest extends TestCase
         $this->assertEquals("11.42", $number->getNumber());
         $number = new Number("11.4234564");
         $this->assertEquals("11.42", $number->getNumber(2));
+        $number = new Number("11.425");
+        $this->assertEquals("11.43", $number->getNumber(2));
         $number = new Number("11.4234564");
         $this->assertEquals("11.4234564", $number->getNumber());
         $number = new Number("11");

@@ -163,14 +163,15 @@ final class Number
         }
         $decimals = $this->getDecimals();
         if (strlen($decimals) === $precision) {
-            return $this->number;
+            return (string) round((float) $this->number, $precision);
         }
-        $decimals = substr($decimals, 0, $precision);
-        if (strlen($decimals) !== $precision) {
-            $zerosToAdd = str_repeat("0", $precision - strlen($decimals));
-            $decimals = $decimals . $zerosToAdd;
+        $number = (string) round((float) "{$this->getIntegers()}.$decimals", $precision);
+        $zerosToAdd = str_repeat("0", abs($precision - strlen(explode('.', $number)[1] ?? "")));
+        if (strpos($number, '.') !== false) {
+            return $number.$zerosToAdd;
         }
-        return implode('.', [$this->getIntegers(), $decimals]);
+
+        return "$number.$zerosToAdd";
     }
 
     /**

@@ -1,0 +1,23 @@
+{
+    "name": "shopblocks-engineering/binary-safe-calculations",
+    "description": "A php package to safely perform mathematical operations on floats.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Josh Capener",
+            "email": "josh@joshcapener.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ShopblocksEngineering\\BinarySafeCalculations\\": "src"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    }
+}

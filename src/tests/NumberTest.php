@@ -48,4 +48,16 @@ class NumberTest extends TestCase
         $this->assertEquals(7, (int) $subtractedNumber->multiply(new Number("10"))->getNumber());
         $this->assertEquals(8, (int) ceil(((0.8 - 0.1)* 10)));
     }
+
+    public function testGetNumber()
+    {
+        $number = new Number("11.42");
+        $this->assertEquals("11.42", $number->getNumber());
+        $number = new Number("11.4234564");
+        $this->assertEquals("11.42", $number->getNumber(2));
+        $number = new Number("11.4234564");
+        $this->assertEquals("11.4234564", $number->getNumber());
+        $number = new Number("11");
+        $this->assertEquals("11.00", $number->getNumber(2));
+    }
 }

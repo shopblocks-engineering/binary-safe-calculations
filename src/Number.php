@@ -156,9 +156,21 @@ final class Number
      *
      * @return string
      */
-    public function getNumber(): string
+    public function getNumber(int $precision = 0): string
     {
-        return $this->number;
+        if (!$precision) {
+            return $this->number;
+        }
+        $decimals = $this->getDecimals();
+        if (strlen($decimals) === $precision) {
+            return $this->number;
+        }
+        $decimals = substr($decimals, 0, $precision);
+        if (strlen($decimals) !== $precision) {
+            $zerosToAdd = str_repeat("0", $precision - strlen($decimals));
+            $decimals = $decimals . $zerosToAdd;
+        }
+        return implode('.', [$this->getIntegers(), $decimals]);
     }
 
     /**

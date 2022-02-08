@@ -16,6 +16,9 @@ class NumberTest extends TestCase
         $this->assertInstanceOf(Number::class, $multipliedNumber);
         $this->assertEquals("6499", $multipliedNumber->getNumber());
         $this->assertEquals(6498, (int) (64.99 * 100));
+        $number = new Number("8");
+        $multiplier = new Number("0.01");
+        $this->assertEquals("0.08", $number->multiply($multiplier)->getNumber(2));
     }
 
     public function testAdd()

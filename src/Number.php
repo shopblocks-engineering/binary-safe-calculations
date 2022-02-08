@@ -1,7 +1,11 @@
 <?php declare(strict_types=1);
 
 namespace ShopblocksEngineering\BinarySafeCalculations;
+function dd(...$args)
+{
 
+    var_dump(...$args);exit;
+}
 final class Number
 {
     /**
@@ -109,8 +113,20 @@ final class Number
             }
             $parts[1] = substr($parts[1], $spaces);
         } else {
-            $parts[1] = substr($parts[0], strlen($parts[0]) - abs($spaces));
-            $parts[0] = substr($parts[0], 0, strlen($parts[0]) - abs($spaces));
+
+            // ["800", ""]
+            // -4
+
+            // 3 - 4 = -1
+            $offset = strlen($parts[0]) - abs($spaces);
+            if ($offset < 0) {
+                $parts[1] = str_repeat("0", abs($offset)) . $parts[0];
+                $parts[0] = "0";
+            } else {
+                $parts[1] = substr($parts[0], $offset);
+                $parts[0] = substr($parts[0], 0, $offset);
+            }
+
             if (empty($parts[0])) {
                 $parts[0] = 0;
             }

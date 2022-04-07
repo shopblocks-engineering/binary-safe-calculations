@@ -132,7 +132,7 @@ final class Number
             }
 
             if ($this->onlyZeros($parts[1])) {
-                return new self($parts[0]);
+                return new self((string) $parts[0]);
             }
         }
 
